@@ -2,9 +2,9 @@ JC2MP-Car-Godmode
 =================
 
 This script sets your vehicle invulnerable.
-Type /caron to enable invulnerability (changed in v1.1)
-Type /caroff to disable invulnerability (changed in v1.1)
-This works just for the car you are currently in (changed in v1.1)
+- Type /caron to enable invulnerability (changed in v1.1)
+- Type /caroff to disable invulnerability (changed in v1.1)
+- This works just for the car you are currently in (changed in v1.1)
 
 Version 1.1 released
 ====================
