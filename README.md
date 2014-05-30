@@ -6,8 +6,8 @@ This script sets your vehicle invulnerable.
 - Type /caroff to disable invulnerability (changed in v1.1)
 - This works just for the car you are currently in (changed in v1.1)
 
-v1.1 Changelog
-==============
+Release v1.1
+============
 
 Changelog:
 - type /cargod to toggle the car godmode
