@@ -1,14 +1,18 @@
---Setting a variable cargod
-cargod = false
-car = args.player:GetVehicle()
+function join(args)
+  
+  args.player:SetValue("cargod",false)
+  
+end
+
 
 function carenter(args)
   
   car = args.player:GetVehicle()
   
-  if cargod then
+  if args.player:GetValue("cargod") == false then
     car:SetInvulnerable(true)
-  else
+  end
+  if args.player:GetValue("cargod") == true then
     car:SetInvulnerable(false)
   end
     
@@ -19,27 +23,28 @@ function toggle(args)
 
   if args.player:InVehicle() then
 
-    if not cargod then
+    if args.player:GetValue("cargod") == false then
       if args.text == "/cargod" then
         --Sets Vehicle Invulnerable
-        local on = args.player:GetVehicle()
-        on:SetInvulnerable(true)
+        local veh = args.player:GetVehicle()
+        veh:SetInvulnerable(true)
         --Message Output
-        args.player:SendChatMessage("Car Godmode is on!",Color(0,255,0))
+        args.player:SendChatMessage("Car Godmode is on!",Color(34, 139, 34))
         --Setting cargod true
-        cargod = true  
+        args.player:SetValue("cargod",true) 
       end
-    else
+  end
+  if args.player:GetValue("cargod") == true then
       if args.text == "/cargod" then
         --Resets Vehicle Attributes (Invulnerable())
-        local on = args.player:GetVehicle()
-        on:SetInvulnerable(false)
+        local veh = args.player:GetVehicle()
+        veh:SetInvulnerable(false)
         --Message Output
-        args.player:SendChatMessage("Car Godmode is off!",Color(0,255,0))
+        args.player:SendChatMessage("Car Godmode is off!",Color(34, 139, 34))
         --Setting cargod false
-        cargod = false
+        args.player:SetValue("cargod",false)
       end
-    end
+  end
 
   end
 
@@ -54,6 +59,7 @@ end
     
     
 
+Events:Subscribe("PlayerChat", join)
 Events:Subscribe("PlayerChat", toggle)
 Events:Subscribe("PlayerEnterVehicle", carenter)
 Events:Subscribe("PlayerExitVehicle", carexit)
