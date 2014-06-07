@@ -13,3 +13,14 @@ Changelog:
 - type /cargod to toggle the car godmode
 - car godmode is passed as a variable
 - you do not have to type /cargod again if you buy or enter a new vehicle
+
+Release v1.2
+============
+
+Changelog:
+- car godmode is passed as a player value
+- direct adaption to the chat command
+
+Fixed Bugs: 
+- car godmode available in gamemodes
+- vehicle explosions while car godmode is enabled
