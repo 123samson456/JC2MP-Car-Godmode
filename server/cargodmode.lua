@@ -1,65 +1,52 @@
 function join(args)
-  
+
   args.player:SetValue("cargod",false)
-  
+
 end
 
 
 function carenter(args)
-  
+
   car = args.player:GetVehicle()
-  
+
   if args.player:GetValue("cargod") == false then
-    car:SetInvulnerable(true)
-  end
-  if args.player:GetValue("cargod") == true then
     car:SetInvulnerable(false)
   end
-    
+  if args.player:GetValue("cargod") == true then
+    car:SetInvulnerable(true)
+  end
+
 end
 
 
 function toggle(args)
 
-  if args.player:InVehicle() then
+  cg = args.player:GetValue("cargod")
 
-    if args.player:GetValue("cargod") == false then
-      if args.text == "/cargod" then
-        --Sets Vehicle Invulnerable
-        local veh = args.player:GetVehicle()
-        veh:SetInvulnerable(true)
-        --Message Output
-        args.player:SendChatMessage("Car Godmode is on!",Color(34, 139, 34))
-        --Setting cargod true
-        args.player:SetValue("cargod",true) 
-      end
-  end
-  if args.player:GetValue("cargod") == true then
-      if args.text == "/cargod" then
-        --Resets Vehicle Attributes (Invulnerable())
-        local veh = args.player:GetVehicle()
-        veh:SetInvulnerable(false)
-        --Message Output
-        args.player:SendChatMessage("Car Godmode is off!",Color(34, 139, 34))
-        --Setting cargod false
-        args.player:SetValue("cargod",false)
-      end
-  end
-
+  if args.text == "/cargod" then
+    if cg == true then
+      args.player:SetValue("cargod",false)
+      args.player:SendChatMessage("Car Godmode has been disabled.",Color.FireBrick)
+    end
+    if cg == false then
+      args.player:SetValue("cargod",true)
+      args.player:SendChatMessage("Car Godmode has been enabled.",Color.Green)
+    end
   end
 
 end
 
 
 function carexit(args)
-  
-  car:SetInvulnerable(false)
-  
-end
-    
-    
 
-Events:Subscribe("PlayerChat", join)
+  car = args.player:GetVehicle()
+  car:SetInvulnerable(false)
+
+end
+
+
+
+Events:Subscribe("PlayerJoin", join)
 Events:Subscribe("PlayerChat", toggle)
 Events:Subscribe("PlayerEnterVehicle", carenter)
-Events:Subscribe("PlayerExitVehicle", carexit)
+--Events:Subscribe("PlayerExitVehicle", carexit)
